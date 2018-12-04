@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type = "text/css">
+    #C1{
+      width:100px;
+      height:100px;
+      background-color:red;
+      border-radius:50%;
+    }
+
+    #C2{
+      width:100px;
+      height:100px;
+      background-color:blue;
+      border-radius:50%;
+    }
+
+    #C3{
+      width:100px;
+      height:100px;
+      background-color:black;
+      border-radius:50%;
+    }
+
+  </style>
+</head>
+<body>
+  <div id = "C1"></div>
+  <div id = "C2"></div>
+  <div id = "C3"></div>
+  <button id = "B1">Red</button>
+  <button id = "B2">Blue</button>
+  <button id = "B3">Black</button>
+
+  <script type = "text/javascript">
+    document.getElementById("B1").onclick = function(){
+      document.getElementById("C1").style.display = "none";#to make the circle disappear on click
+    }
+    document.getElementById("B2").onclick = function(){
+      document.getElementById("C2").style.display = "none";
+    }
+    document.getElementById("B3").onclick = function(){
+          document.getElementById("C3").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

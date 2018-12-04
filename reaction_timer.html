@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title>Reaction Timer</title>
+  <style type = "text/css">
+    #rand_shape{
+      width:200px;
+      height:200px;
+      background-color:red;
+      position:relative;
+      top:2px;
+      left:5px;
+      borderRadius:0px;
+    }
+  </style>
+</head>
+<body>
+  <div id = "timer">Last reaction : </div>
+  <div id = "rand_shape"></div>
+
+  <script type = "text/javascript">
+
+    var color_hex = '0123456789ABCDEF';
+
+    function color_generator(){
+      var generated_color = "";
+      for(i = 0;i < 6;i++){
+        generated_color += Math.floor((Math.random()*16)+1);
+      }
+      return generated_color;
+    }
+
+    var generated_width = "";
+    var generated_height = "";
+    var generated_radius = "";
+    function shape_generator(){
+      generated_width = Math.floor((Math.random()*50)+1)+70+"px";
+      generated_height = Math.floor((Math.random()*50)+1)+70+"px";
+      if(generated_width == generated_height)
+      {
+        generated_radius = "50%";
+      }
+    }
+
+    function pos_generator(){
+      shape_generator();
+      var start = new Date().getTime();
+      generated_post = Math.floor((Math.random()*1000)+1)+70+"px";
+      generated_posl = Math.floor((Math.random()*700)+1)+70+"px";
+      document.getElementById("rand_shape").style.width = generated_width;
+      document.getElementById("rand_shape").style.height = generated_height;
+      document.getElementById("rand_shape").style.borderRadius = generated_radius;
+      document.getElementById("rand_shape").style.top = generated_post;
+      document.getElementById("rand_shape").style.bottom = generated_posl;
+      document.getElementById("rand_shape").style.backgroundColor = color_generator();
+    }
+    var start = new Date().getTime();
+    function new_shape(){
+              pos_generator();
+              document.getElementById("rand_shape").style.display = "block";
+              var start = new Date().getTime();
+    }
+
+    document.getElementById("rand_shape").onclick = function(){
+      var end = new Date().getTime();
+      var elasped_time = end - start;
+      document.getElementById("rand_shape").style.display = "none";
+      document.getElementById("timer").innerHTML = "Last reaction : "+(elasped_time/1000)+" sec";
+      window.setInterval(new_shape,4000);
+    }
+
+  </script>
+</body>
+</html>

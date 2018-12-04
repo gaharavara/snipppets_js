@@ -1,0 +1,27 @@
+<html>
+<head>
+<style type = "text/css">
+</style>
+</head>
+<body>
+<input type = "text" id = "text1">
+<button id = "b1">I Guessed</button>
+<script type = "text/javascript">
+
+document.getElementById("b1").onclick = function(){
+
+      var guess = document.getElementById("text1").value;
+      num = Math.floor((Math.random()*5)+1);
+      if(guess == num){
+        alert("Yeah you got it!")
+      }
+      else {
+        alert("you Guessed "+guess+" number was "+num);
+      }
+
+
+}
+
+</script>
+</body>
+</html>
