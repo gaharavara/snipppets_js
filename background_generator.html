@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gen</title>
+	<style type="text/css">
+		#grad{
+			
+			background: linear-gradient(to right, #ff8040, #008040);
+
+		}
+
+	</style>
+</head>
+<body id="grad">
+	<input type="color" id="box1" name="box1" value="#ff8040"">
+	<input type="color" id="box2" name="box2" value="#008040"">
+<script type="text/javascript">
+	var c1 = document.getElementById("box1");
+	var c2 = document.getElementById("box2");
+	var b =  document.getElementById("grad");
+	function setGrad(){
+
+		b.style.background = "linear-gradient(to right,"+ c1.value +", "+ c2.value +")";
+		css.textContent = body.style.background + ";";
+
+	}
+
+	c1.addEventListener("input",setGrad);
+	c2.addEventListener("input",setGrad);
+</script>	
+</body>
+</html>
