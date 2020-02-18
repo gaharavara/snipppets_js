@@ -1,13 +1,15 @@
 import React from "react";
 
+import Header from "./Header";
 import MyList from "./MyList";
+import Footer from "./Footer";
 
 function App(){
     return (
         <div>
-            <h1>This is my List.</h1>
-            <p>The list has personalised catered items</p>
+            <Header />
             <MyList />
+            <Footer />
         </div>   
     );
 }

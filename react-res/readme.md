@@ -140,7 +140,16 @@ function MyList(){
 
 export default MyList;
 ```
-### [ ] (0:35:07) Parent/Child Components
+
+
+We use export default in case we don't want the function/class etc. passed to be imported by that specific name only.
+
+In case we are only exporting a single class/function etc. we can use export default.
+
+We can use export default only once in a file.
+
+
+### [ X ] (0:35:07) Parent/Child Components
 
 File: components/App.js
 ```javascript
@@ -189,11 +198,98 @@ import MyList from "./components/App";
 ReactDOM.render(<App/>, document.getElementById("root"));
 ```
 
-In react we have components -> App, MyList (the functions that we create and later call using <App /> etc.)
-Elements are the base -> HTML like <div></div> 
+In react we have components -> App, MyList (the functions that we create and later call using `<App />` etc.)
+Elements are the base -> HTML like `<div></div>` 
 
 Components act as the root in React.
-### [ ] (0:43:14) Parent/Child Component Practice
+
+
+
+### [ X ] (0:43:14) Parent/Child Component Practice
+
+**Child:**
+
+File: components/Header.js
+
+```javascript
+function Header(){
+    return (
+        <header>
+            <h1>This is my List.</h1>
+            <p>The list has personalised catered items</p>
+        </header>    
+    );
+}
+
+export default Header;
+```
+
+File: components/MyList.js
+
+```javascript
+import React from "react";
+
+function MyList(){
+    return ( 
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    );
+}
+
+export default MyList;
+```
+
+
+File: components/Footer.js
+```javascript
+import React from "react";
+
+function Footer(){
+    return (
+        <footer>
+            <h2>This was a practice session.</h2>
+        </footer>
+    );
+}
+
+export default Footer;
+
+/* 
+We use export default in case we don't want the function/class etc. passed to be imported by that specific name only.
+In case we are only exporting a single class/function etc. we can use export default.
+We can use export default only once in a file.
+*/
+```
+
+Here `Footer` is a component while `<footer>` is an element.
+
+**Parent: **
+File: Components/App.js
+
+```javascript
+
+import React from "react";
+
+import Header from "./Header";
+import MyList from "./MyList";
+import Footer from "./Footer";
+
+function App(){
+    return (
+        <div>
+            <Header />
+            <MyList />
+            <Footer />
+        </div>   
+    );
+}
+
+export default App;
+```
+
 ### [ ] (0:48:12) Todo App - Phase 1
 ### [ ] (0:50:50) Styling React with CSS Classes
 ### [ ] (0:55:56) Some Caveats
