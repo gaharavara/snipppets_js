@@ -54,11 +54,11 @@ JSX is mostly HTML, with some advantages for JS.
 
 We can't have two adjacent JSX elements
 
-### [ ] (0:20:34) Functional Components
+### [ X ] (0:20:34) Functional Components
 
 Components wrapped inside a function.
-Functional components too, can return only **one JSX element**. ( * Use div
-to wrap everything into one function * )
+Functional components too, can return only **one JSX element**. ( *Use div
+to wrap everything into one function* )
 
 ```javascript
     import React from "react";
@@ -77,7 +77,7 @@ to wrap everything into one function * )
     ReactDOM.render(<MyList />, document.getElementById("root"));
 ```
 
-### [ ] (0:24:32) Functional Components Practice
+### [ X ] (0:24:32) Functional Components Practice
 Spaced learning and repetition.
 
 ```javascript
@@ -105,9 +105,94 @@ Spaced learning and repetition.
     ReactDOM.render(<MyList />, document.getElementById("root"));
 ```
 
-### [ ] (0:29:41) Move Components into Separate Files
+### [ X ] (0:29:41) Move Components into Separate Files
 
+A good convention is that Each file must contain one component.
+
+
+File: index.js
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import MyList from "./components/MyList";
+
+ReactDOM.render(<MyList/>, document.getElementById("root"));
+```
+
+The convention to name the file is to keep the filename same as component name.
+We import react as we are including JSX.
+
+
+File: components/MyList.js
+
+```javascript
+import React from "react";
+
+function MyList(){
+    return ( 
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    );
+}
+
+export default MyList;
+```
 ### [ ] (0:35:07) Parent/Child Components
+
+File: components/App.js
+```javascript
+import React from "react";
+
+import MyList from "./MyList";
+
+function App(){
+    return (
+        <div>
+            <h1>This is my List.</h1>
+            <p>The list has personalised catered items</p>
+            <MyList />
+        </div>   
+    );
+}
+
+export default App;
+```
+
+File: components/MyList.js
+
+```javascript
+import React from "react";
+
+function MyList(){
+    return ( 
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    );
+}
+
+export default MyList;
+```
+
+File: index.js
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import MyList from "./components/App";
+
+ReactDOM.render(<App/>, document.getElementById("root"));
+```
+
+In react we have components -> App, MyList (the functions that we create and later call using <App /> etc.)
+Elements are the base -> HTML like <div></div> 
+
+Components act as the root in React.
 ### [ ] (0:43:14) Parent/Child Component Practice
 ### [ ] (0:48:12) Todo App - Phase 1
 ### [ ] (0:50:50) Styling React with CSS Classes
