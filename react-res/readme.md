@@ -205,7 +205,7 @@ Components act as the root in React.
 
 
 
-### [ X ] (0:43:14) Parent/Child Component Practice
+### [X] (0:43:14) Parent/Child Component Practice
 
 **Child:**
 
@@ -266,7 +266,7 @@ We can use export default only once in a file.
 
 Here `Footer` is a component while `<footer>` is an element.
 
-**Parent: **
+**Parent:**
 File: Components/App.js
 
 ```javascript
@@ -291,12 +291,133 @@ export default App;
 ```
 
 ### [ ] (0:48:12) Todo App - Phase 1
-### [ ] (0:50:50) Styling React with CSS Classes
-### [ ] (0:55:56) Some Caveats
-### [ ] (0:58:12) JSX to JavaScript and Back
-### [ ] (1:02:11) Inline Styles with the Style Property
+### [X] (0:50:50) Styling React with CSS Classes
+
+
+Use className DOM API to give class to react elements for styling.
+
+Don't give className to react Components.
+
+File: components/Header.js
+```javascript
+import React from "react";
+
+function Header(){
+    return (
+        <header className="navbar">
+            <h1>This is my List.</h1>
+            <p>The list has personalised catered items</p>
+        </header>    
+    );
+}
+
+export default Header;
+```
+
+Provide the necessary styling in the style sheet for the class, here navbar and include the style.css in html as we usually do.
+
+
+**NOTE**: React is used as a server side templating engine.
+
+
+### [X] (0:58:12) JSX to JavaScript and Back
+
+inside JSX if we want to include JS, we do it by using **{}**, 
+
+**{** defines that from here inside our JS code is starting in JSX, we can write any valid JS code here and when we are done we close it by using **}**
+
+```javascript
+import React from "react";
+
+function App(){
+    var firstName = "Abhishek";
+    var lastName = "Singh";
+    /*
+
+    return (
+        <h1>Hi firstName + " " + lastName</h1>
+    );
+
+    This outputs the exact thing <h1>Hi firstName + " " + lastName</h1> in the browser, thus we can't directly put 
+    JS admist JSX.
+
+
+    */
+
+   return (
+       <h1>Hi { firstName + " " + lastName }</h1> // Outputs Hi Abhishek Singh
+   );
+}
+```
+```javascript 
+return (
+    <h1>{`${firstName} + " " + ${lastName}`}</h1> //Using ES6 for the same
+);
+```
+### [X] (1:02:11) Inline Styles with the Style Property
+
+For making components more dynamic using the CSS properties we can use the inline style property.
+
+For App component
+```javascript 
+return (
+    <h1 style={{background: "Black", backgroundColor: "Gray"}}>Hello World</h1>
+    /* 
+    
+    Here we send {} ( object ) to the style property
+    thus we have 
+    {
+        background: Black,
+        backgroundColor: Gray
+    }
+
+    but since we are admist JSX we need to switch to JS before we can send an object,
+
+    so we wrap the object into {{background: Black, backgroundColor: Gray}}
+
+    */
+);
+```
+
+Since JS cannot have a property name with - (naming Convention), in between thus we replace all such CSS properties with
+
+background-color -> backgroundColor
+font-size -> fontSize
+
+
+For cleaner code we may write the above script as
+
+```javascript
+import React from "react";
+
+function App(){
+    var firstName = "Abhishek";
+    var lastName = "Singh";
+    // CSS object
+    var introStyle = {
+        fontSize: "200px",
+        backgroundColor: "Black",
+    }
+
+    /* 
+    Later we can play with the assigned values to the styling object and change the properties accordingly to 
+    make the style more dynamic. We can utilise dot notation etc. to play and change the properties of the styling object.
+    
+    if(place condition){
+        introStyle.backgroundColor =  Gray;
+    }
+    */
+   return (
+       <h1 style={introStyle}>Hi { firstName + " " + lastName }</h1>
+   );
+}
+
+```
+
 ### [ ] (1:09:21) Todo App - Phase 2
-### [ ] (1:12:42) Props Part 1 - Understanding the Concept
+### [X] (1:12:42) Props Part 1 - Understanding the Concept
+
+
 ### [ ] (1:14:56) Props Part 2 - Reusable Components
 ### [ ] (1:17:29) Props in React
 ### [ ] (1:29:39) Props and Styling Practice

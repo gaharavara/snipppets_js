@@ -1,9 +1,12 @@
 import React from "react";
 
 function Footer(){
+    var styleFooter = {
+        fontSize: "10px"
+    };
     return (
-        <footer>
-            <h2>This was a practice session.</h2>
+        <footer style={{backgroundColor: "Gray"}}>
+            <h2 style={styleFooter}>This was a practice session.</h2>
         </footer>
     );
 }
