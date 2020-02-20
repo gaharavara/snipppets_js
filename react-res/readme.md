@@ -416,10 +416,112 @@ function App(){
 
 ### [ ] (1:09:21) Todo App - Phase 2
 ### [X] (1:12:42) Props Part 1 - Understanding the Concept
+### [X] (1:14:56) Props Part 2 - Reusable Components
+### [Xs] (1:17:29) Props in React
 
 
-### [ ] (1:14:56) Props Part 2 - Reusable Components
-### [ ] (1:17:29) Props in React
+Props refer to properties/attributes in JSX.
+Passing properties(props) in react components(JSX):
+
+Converting this kind of list into dynamic react based design
+```html
+
+<h1>Abhishek Singh</h1>
+<a href="github.com/gaharavara">gaharavara</a>
+
+<h1>XYZ</h1>
+<a href="github.com/X">X</a>
+
+```
+
+file: components/List.js
+```javascript
+import React from "react";
+import Item from "./Item.js"
+
+function List(){
+    return (
+        <div className="devlist">    
+            <Item
+                name="Abhishek Singh"
+                link="github.com/gaharavara"
+                userName="gaharavara"
+            />
+
+            <Item
+                name="XYZ"
+                link="github.com/X"
+                userName="X"
+            />
+
+        </div>    
+    );    
+}
+
+export default List;
+```
+
+file: components/Item.js
+```javascript
+import React from "react";
+
+function Item(props){
+    return (
+        <div>
+            <h1>{props.name}</h1>
+            <a href={props.link}>GitHub: {props.userName}</a>
+        </div>
+    )
+}
+
+export default Item;
+
+```
+
+A better way would be to wrap all the properties in a single object and
+send them, to mimic the behaviour of data sent in the form of JSON( the usual data we receive from APIs).
+
+file: components/List.js
+```javascript
+import React from "react";
+import Item from "./Item.js";
+
+function List(){
+    return (
+        <div className="devlist">    
+            <Item devList = {{ name: "Abhishek Singh", link: "github.com/gaharavara", userName="gaharavara"}}
+            />
+
+            <Item devList = {{name: "XYZ", link: "github.com/X", userName: "X"}}
+            />
+
+        </div>    
+    );    
+}
+
+export default List;
+```
+
+Here since we are wrapping everything in an object we are switching from JSX to JS, thus we use `{}`, and inside we
+form our object which we set equal to the property devList, which will be sent as props to Item.js
+
+file: components/Item.js
+```javascript
+import React from "react";
+
+function Item(props){
+    return (
+        <div>
+            <h1>{props.devList.name}</h1>
+            <a href={props.devList.link}>GitHub: {props.devList.userName}</a>
+        </div>
+    )
+}
+
+export default Item;
+
+```
+
 ### [ ] (1:29:39) Props and Styling Practice
 ### [ ] (1:40:25) Mapping Components
 ### [ ] (1:48:27) Mapping Components Practice
