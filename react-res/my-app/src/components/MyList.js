@@ -1,11 +1,24 @@
 import React from "react";
+import Item from "./Item.js";
 
 function MyList(){
     return ( 
     <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <Item
+            name="Abhishek Singh"
+            handle="github"
+            url="github.com/gaharavara" 
+        />
+        <Item
+            name="Abhishek Singh"
+            handle="github"
+            url="github.com/gaharavara" 
+        />
+        <Item
+            name="Abhishek Singh"
+            handle="github"
+            url="github.com/gaharavara"        
+        />
     </ul>
     );
 }

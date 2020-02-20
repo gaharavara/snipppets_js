@@ -415,6 +415,8 @@ function App(){
 ```
 
 ### [ ] (1:09:21) Todo App - Phase 2
+
+
 ### [X] (1:12:42) Props Part 1 - Understanding the Concept
 ### [X] (1:14:56) Props Part 2 - Reusable Components
 ### [Xs] (1:17:29) Props in React
