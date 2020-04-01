@@ -730,7 +730,44 @@ export default App;
 ### [X] (1:48:27) Mapping Components Practice
 ### [X] (1:53:44) Todo App - Phase 3
 
-### [ ] (1:58:16) Class-based Components
+### [X] (1:58:16) Class-based Components
+Class components
+As we go to an advanced level we notice, Functional components are not enough
+( i.e. lack functionality, which we can only implement through Class components )
+
+```javascript
+import React from "react";
+/*
+    function App(){
+        return (
+            <div>
+                <h1>Hello World!</h1>
+            </div>
+        );
+}
+*/
+
+// Shifting the above Functional component to Class component
+
+class App extends React.Component {
+
+    render (){
+        /* This method is must to implement as it is responsible to return the
+            rendering element.
+           The render method can include style, conditional rendering etc.
+        */ 
+       return (
+           <div>
+                <h1>Hello World!</h1>
+           </div>
+       )
+    }
+
+}
+
+export default App;
+```
+
 ### [ ] (2:03:32) Class-based Components Practice
 ### [ ] (2:07:11) State
 ### [ ] (2:12:08) State Practice
