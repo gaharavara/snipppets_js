@@ -524,8 +524,120 @@ export default Item;
 
 ```
 
-### [ ] (1:29:39) Props and Styling Practice
-### [ ] (1:40:25) Mapping Components
+### [X] (1:29:39) Props and Styling Practice
+
+To practice we will make a blog entry page.
+Blog entry page will have a title, date, content for now.
+
+file: index.js
+```javascript
+import React from "react"
+import ReactDOM from "react-dom"
+import BlogEntry from "./components/App.js"
+
+ReactDOM.render(<App />, document.getElementById("root"))
+```
+
+file: components/App.js
+```javascript
+import React from "react"
+import BlogEntry from "./components/BlogEntry.js"
+
+function App(){
+    return (
+        <div>
+            <BlogEntry blogData = {{ date: "1/04/2020", 
+            title: "Learning React!", 
+            content: "LoremIpsumfeofrsf",
+            author: "gaharavara" 
+            }}
+            />
+            
+            <BlogEntry blogData = {{ date: "2/04/2020", 
+            title: "Learning React!", 
+            content: "LoremIpsumfeofrsf",
+            author: "gaharavara" 
+            }}
+            />
+
+            <BlogEntry blogData = {{ date: "3/04/2020", 
+            title: "Learning React!", 
+            content: "LoremIpsumfeofrsf",
+            author: "gaharavara" 
+            }}
+            />
+        </div>
+    )    
+}
+
+export default App;
+```
+
+file: components/BlogEntry.js
+```javascript
+import React from "react"
+import BlogTitle from "./components/BlogTitle.js"
+import BlogContent from "./components/BlogContent.js"
+
+function BlogEntry(props){
+    return (
+        <div className="blog-entry">
+            <BlogTitle
+            blogTitle = {{
+                title: props.blogData.title,
+                date: props.blogData.date
+            }}
+            />
+            <BlogContent
+            blogContent = {{
+                content: props.blogData.content,
+                author: props.blogData.author
+            }}
+            />
+        </div>
+    )
+}
+
+export default BlogEntry;
+```
+
+file: components/BlogTitle.js
+```javascript
+import React from "react";
+
+function BlogTitle(props){
+    return (
+        <div>
+            <h1>{props.blogTitle.title}</h1>
+            <h5>{props.blogTitle.date}</h5>
+        </div>
+    )
+}
+
+export default BlogTitle;
+```
+
+file: components/BlogContent.js
+```javascript
+import React from "react";
+
+function BlogContent(props){
+    return (
+        <div>
+            <p>{props.blogContent.content}</p>
+            <br />
+            <p style={{color: "blue", fontStyle: "italic"}}>{props.blogContent.author}</p>
+        </div>
+    )
+}
+
+export default BlogContent;
+```
+
+### [X] (1:40:25) Mapping Components
+
+
+
 ### [ ] (1:48:27) Mapping Components Practice
 ### [ ] (1:53:44) Todo App - Phase 3
 ### [ ] (1:58:16) Class-based Components
