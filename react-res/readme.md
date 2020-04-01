@@ -636,10 +636,100 @@ export default BlogContent;
 
 ### [X] (1:40:25) Mapping Components
 
+Higher order methods are one of the essential components of javascript programming
+Example of higher order methods are map, filter, reduce, every, sort, some, find, findindex etc.
 
+```javascript
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-### [ ] (1:48:27) Mapping Components Practice
-### [ ] (1:53:44) Todo App - Phase 3
+var mapped_arr = arr.map(function(num){
+    return num-1;
+})
+
+console.log(mapped_arr);
+/* 
+Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+What map basically does is for every element in arr it passes the element inside
+the functiion as num, the function performs the logic ( num-1 here), a new array 
+with the resultant elements is stored in mapped_arr
+*/
+```
+
+file: components/App.js
+```javascript
+import React from "react"
+import BlogEntry from "./components/BlogEntry.js"
+
+/*
+    function App(){
+        return (
+            <div>
+                <BlogEntry blogData = {{ date: "1/04/2020", 
+                title: "Learning React!", 
+                content: "LoremIpsumfeofrsf",
+                author: "gaharavara" 
+                }}
+                />
+                
+                <BlogEntry blogData = {{ date: "2/04/2020", 
+                title: "Learning React!", 
+                content: "LoremIpsumfeofrsf",
+                author: "gaharavara" 
+                }}
+                />
+
+                <BlogEntry blogData = {{ date: "3/04/2020", 
+                title: "Learning React!", 
+                content: "LoremIpsumfeofrsf",
+                author: "gaharavara" 
+                }}
+                />
+            </div>
+        )    
+    }
+*/
+
+// In case we are getting our data from any external source( like in real life, JSON mostly)
+const json_data = [
+    {
+        date: "1/04/2020",
+        title: "Learning React!", 
+        content: "LoremIpsumfeofrsf",
+        author: "gaharavara"
+    },
+    {
+        date: "2/04/2020",
+        title: "Learning React!", 
+        content: "LoremIpsumfeofrsf",
+        author: "gaharavara"
+    },
+    {
+        date: "3/04/2020",
+        title: "Learning React!", 
+        content: "LoremIpsumfeofrsf",
+        author: "gaharavara"
+    }
+]
+
+// This is how we can use the map functionality, **React makes you a better js programmer** 
+const mapped_components = json_data.map(function(blog_entry){
+    return <BlogEntry blogData = {blog_entry}/>
+})
+
+function App(){
+    return (
+        <div>
+            {mapped_components}
+        </div>
+    );
+}
+
+export default App;
+```
+### [X] (1:48:27) Mapping Components Practice
+### [X] (1:53:44) Todo App - Phase 3
+
 ### [ ] (1:58:16) Class-based Components
 ### [ ] (2:03:32) Class-based Components Practice
 ### [ ] (2:07:11) State
