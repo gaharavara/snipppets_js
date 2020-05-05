@@ -733,7 +733,8 @@ export default App;
 ### [X] (1:58:16) Class-based Components
 Class components
 As we go to an advanced level we notice, Functional components are not enough
-( i.e. lack functionality, which we can only implement through Class components )
+( i.e. lack functionality, which we can only implement through Class components like states,
+lifecycle methods etc. )
 
 ```javascript
 import React from "react";
@@ -768,18 +769,386 @@ class App extends React.Component {
 export default App;
 ```
 
-### [ ] (2:03:32) Class-based Components Practice
-### [ ] (2:07:11) State
-### [ ] (2:12:08) State Practice
-### [ ] (2:15:45) State Practice 2
-### [ ] (2:19:59) Todo App - Phase 4
-### [ ] (2:22:05) Handling Events in React
+### [X] (2:03:32) Class-based Components Practice
+
+convert the following into class based components
+
+Functional components
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+// #1
+function App(){
+    return (
+        <div>
+            <Header username = "Ram"/>
+            <Greeting />
+        </div>
+    )
+}
+
+// #2
+function Header(props){
+    return (
+        <header>
+            <p>Welcome {props.username}!</p>
+        </header>
+    )
+}
+
+// #3
+function Greeting() {
+   const date = new Date();
+   const hours = date.getHours()
+   let timeOfDay
+
+   if(hours < 12) {
+       timeOfDay = "Morning";
+   } else if (hours >= 12 && hours <= 17) {
+       timeOfDay = "Afternoon";
+   } else {
+       timeOfDay = "Night";
+   }
+
+   return (
+       <h1>Good {timeOfDay} to you sir or madam!</h1>
+   )
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+Class-based components
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+// #1
+class App extends React.components {
+
+    render() {
+        return (
+            <div>
+                <Header username = "Ram"/>
+                <Greeting />
+            </div>
+        )
+    }
+
+}
+    
+
+// #2
+class Header extends React.components {
+    
+    render(){
+        return (
+            /*  In case of class based components we use this keyword to access
+                the props and methods etc. ( basically to call a method of the class use this.methodName(), simply apply the class related concepts in JS )
+            */
+            <header>
+                <p>Welcome {props.username}!</p>
+            </header>
+        )
+    }
+
+}
+
+// #3
+class Greeting extends React.components {
+
+    render(){
+        const date = new Date();
+        const hours = date.getHours()
+        let timeOfDay
+
+        if(hours < 12) {
+            timeOfDay = "Morning";
+        } else if (hours >= 12 && hours <= 17) {
+            timeOfDay = "Afternoon";
+        } else {
+            timeOfDay = "Night";
+        }
+
+        return (
+            <h1>Good {timeOfDay} to you sir or madam!</h1>
+        )
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+### [X] (2:07:11) State
+State is the data that a component maintains.
+We can have state only for class based components.
+
+Why do we need stat?
+we can't change the data inside props, as doing so will create irregularities and
+inconsistency in the data. Thus we should never directly change data inside props.
+i.e. props.username = "Joe"; -> X
+
+In case we need to have a field whose data can be changed, we use state to do so!
+state maintains the data for the component, i.e. it makes sure that in case if the
+data is changed, all the places that use that data are passed with new data and new
+components( for example all the child components that may be using that data ) are generated accordingly.
+
+we can use set state to change/set a new value of the data inside our current state.
+```javascript
+import React from "react"
+
+class App extends React.Component {
+    constructor(){
+        // We call super to call the constructor of React.Component
+        super()
+        this.state = {
+            answer: "YEAH!"
+        }
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>My answer is {this.state.answer}</h1>
+            </div>
+        )
+        /*
+        return (
+            <div>
+                <ChildComponent answer={this.state.answer} />
+                // Such components on change in this.state.answer will be regenerated // and updated accordingly.
+            </div>
+        )
+    }
+}
+
+
+export default App;
+```
+### [X] (2:12:08) State Practice
+```javascript
+import React from "react"
+
+class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            name : "Abhishek",
+            age : 20
+        }
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>{this.state.name}</h1>
+                <h1>{this.state.age}</h1>    
+            </div>
+        )
+    }
+
+}
+```
+### [X] (2:15:45) State Practice 2
+```javascript
+import React from "react"
+
+function App() {
+    return (
+        <div>
+            <h1>You are currently logged (in/out)</h1>
+        </div>
+    )
+}
+
+export default App
+```
+
+* Given a stateless functional component, add state to it
+* State should have  a property called `isLoggedIn` which is a boolean
+* Render logged in and out accordingly
+
+```javascript
+import React from "react"
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            isLoggedIn : true
+        }
+    }
+
+    render() {
+        // Later, we will look into conditional rendering
+        let output
+        if(this.state.isLoggedIn){
+            ouput = "out"
+        } else {
+            output = "in"
+        }
+        return (
+            <div>
+                <h1>You are currently logged {output}</h1>
+            </div>
+        )
+    }
+}
+
+export default App
+```
+### [] (2:19:59) Todo App - Phase 4
+
+### [X] (2:22:05) Handling Events in React
+Events here means signals generated in case the user clicks, hovers etc. ( i.e 
+interacts with your web page )
+
+Event handlers in react are similar to how regular html handlers are with some minute changes like the handlers in react follows the regular javascript convention i.e. camel case.
+We can check for the supported events list in react documentation.
+
+```javascript
+import React from "react"
+
+function handleClick() {
+    console.log("I am clicked")
+}
+
+function App() {
+    return (
+        <div>
+            <button onClick={handleClick}>Click Me</button>
+        </div>
+    )
+}
+
+export default App
+```
+
 ### [ ] (2:25:52) Todo App - Phase 5
-### [ ] (2:27:11) Changing State
+### [X] (2:27:11) Changing State
+```javascript
+import React from "react"
+
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            count : 0
+        }
+
+        // Bind the handleClick method to this
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        /*
+            Changing state is like changing clothes, we cannot repaint or
+            edit our current clothes! we replace them with new clothes
+
+            Thus here we use setState method to pass the new object to our state.
+
+            setState is a method that comes from parent class React.Component and 
+            thus we need to bind it.
+
+            Also to be able to use setState we must be able to call it using 
+            this.setState, thus we bind our current method handleClick with this
+            context in constructor.
+        */
+
+        /* 
+            using this.state to access attributes of the objects may some time work
+            and some time not thus it is best to use a function where we can have the
+            previous state as a parameter which then can be accessed and used.
+
+            this.setState({ count: this.state.count+1 })
+        */
+
+        this.setState(function (prevState){
+            return {
+                count : prevState.count + 1
+            }
+        })
+
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.state.count}</h1>
+                <button onClick={this.handleClick}>Click Me</button>
+            </div>
+        )
+
+    }
+}
+
+export default App
+```
+
+Every time state changes all the components using that state are re-rendered.
 ### [ ] (2:39:29) Todo App - Phase 6
-### [ ] (2:47:14) Lifecycle Methods Part 1
-### [ ] (2:56:45) Lifecycle Methods Part 2
-### [ ] (3:00:07) Conditional Rendering
+### [X] (2:47:14) Lifecycle Methods Part 1
+
+Many major react lifecycle methods were depreceated, we can refer to react 
+documentation to get a better understanding about our react version related 
+lifecycle methods.
+
+example of lifecycle method:
+
+render() {
+
+}
+
+componentDidMount() {
+
+// This method runs exactly once before the component is rendered for the first
+// time, it can be used in a variety of ways like when we want to call an API to
+// fetch some data at the beginning and this process needs to be done only once.
+
+}
+
+UNSAFE_componentWillReceiveProps() {
+
+// This lifecycle method was depreceated in the version 16, this method executes
+// every time we have a some new value passed as props this method is executed
+// can be used when we want to alter the props, apply some formula etc. to derive
+// some values everytime whenever props are changed or new props is passed.
+
+}
+
+shouldComponentUpdate(nextProps, nextState) {
+
+// This react method returns True or False, and is called before rendering a 
+// component, in react every time React thinks whether to re-render a component it
+// re-renders it, this makes the whole app a bit slow in case we are doing useless
+// re-rendering thus via this method 
+
+}
+
+componentWillUnmount() {
+
+// This methods runs when a particular component is removed, it is basically like
+// garbage collector method and can be used to clean variables, values etc. which are
+// no longer needed thus increasing the efficiency of the overall app.
+
+}
+
+### [X] (2:56:45) Lifecycle Methods Part 2
+
+static getDerivedStateFromProps() {
+
+}
+
+getSnapshotBeforeUpdate() {
+
+// This method can be used to simply save or store the snapshot of the way things 
+// were before the change or update, what we will have is a snapshot of object with
+// values before the update changes something. 
+
+}
+
+### [X] (3:00:07) Conditional Rendering
+
 ### [ ] (3:11:26) Conditional Rendering Part 2
 ### [ ] (3:14:21) Conditional rendering Practice
 ### [ ] (3:23:00) Todo App - Phase 7
