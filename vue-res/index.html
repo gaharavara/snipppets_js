@@ -8,6 +8,11 @@
         <div id="hello-world" v-if="seen">
             <p>{{ greeting() }}</p>
         </div>
+
+        <div id="data-binding" v-if="seen">
+            <a v-bind:href="bind_blog_address">My blog address via directive v-bind</a>
+            <p v-html="blog_directive"></p>
+        </div>
         <script src="app.js"></script>       
     </body>    
 </html>
