@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Welcome tu vue</title>
-        <style href="style.css" rel="stylesheet"></style>
+        <link href="style.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body>
@@ -9,10 +9,29 @@
             <p>{{ greeting() }}</p>
         </div>
 
+        
         <div id="data-binding" v-if="seen">
             <a v-bind:href="bind_blog_address">My blog address via directive v-bind</a>
             <p v-html="blog_directive"></p>
         </div>
+
+        
+        <div id="event-handling" v-if="seen">
+            <h1>{{ num }}</h1>
+            <button v-on:click="add(2)">Add 2</button>
+            <button @dblclick="subtract(2)">Subtract 2</button>
+        </div>
+
+        
+        <div id="computed-properties"></div>
+        
+        
+        <div id="dynamic-css" v-bind:class="computed_css" v-if="seen">
+            <p>You can change my color by clicking the button below!</p>
+            <button v-on:click="toggle = !toggle">Change Color</button>
+        </div>
+
+        
         <script src="app.js"></script>       
     </body>    
 </html>
