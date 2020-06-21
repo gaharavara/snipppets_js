@@ -1,0 +1,13 @@
+function destroyer(arr) {
+  var seek = [...arguments][0]
+  var dest = [...arguments].slice(1)
+  seek = seek.filter( num => {
+    if(dest.indexOf(num) != -1) {
+      return false
+    }
+    return true
+  })
+  return seek;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);

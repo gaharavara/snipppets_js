@@ -1,0 +1,18 @@
+function diffArray(arr1, arr2) {
+  arr1 = arr1.filter( itemInArr1 => {
+   var matched = false;
+   arr2 = arr2.filter( itemInArr2 => {
+     var flag = true
+      if(itemInArr1 === itemInArr2) {
+        flag = false
+        matched = true
+      }
+      return flag
+    })
+    return !matched
+  })
+  var newArr = [...arr1, ...arr2]
+  return newArr;
+}
+
+diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);

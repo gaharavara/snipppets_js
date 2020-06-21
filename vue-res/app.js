@@ -31,7 +31,7 @@ var app2 = new Vue({
 })
 
 // Events habndling in vue
-// We use v-on directive => v:on:event_name="method or expression (ex. i++)" 
+// We use v-on directive => v-on:event_name="method or expression (ex. i++)" 
 // @event_name="method" shorthand
 // the list of event names is present on vuejs site
 var app3 = new Vue({
@@ -397,3 +397,10 @@ methods: {
 // http request
 // npm install axios
 // use jsonplaceholder for dev purpose get etc/ requests 
+
+
+// Routing in vue
+// npm install vue-router
+// The best way is to read the simple documentation or use `vue add route`, a built in
+// command in vue cli to creata dummy routes and do all the configuration for you needed
+// to set up the routes 
