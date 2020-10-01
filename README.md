@@ -1,2 +1,2 @@
 # snipppets_js
-Some small fun applications for practising the basics of Java Script.
+Some small fun applications for practicing the basics of Java Script.
